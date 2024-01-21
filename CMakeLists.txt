@@ -96,15 +96,15 @@ target_compile_features(SharedCode INTERFACE cxx_std_20)
 # file(GLOB_RECURSE SourceFiles CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/source/*.cpp" "${CMAKE_CURRENT_SOURCE_DIR}/source/*.h")
 # target_sources(SharedCode INTERFACE ${SourceFiles})
 target_sources(SharedCode INTERFACE
-        ./source/plugin/PluginProcessorBase.cpp
-        ./source/plugin/PluginProcessorBase.h
-        ./source/plugin/PluginProcessor.cpp
-        ./source/plugin/PluginEditor.h
-        ./source/plugin/PluginEditor.cpp
-        ./source/plugin/ProjectInfo.h
-        ./source/plugin/ProjectInfo.cpp.in
-        ./source/plugin/ProjectInfo.cpp
-        ./source/plugin/PluginProcessor.h
+        source/PluginProcessorBase.cpp
+        source/PluginProcessorBase.h
+        source/PluginProcessor.cpp
+        source/PluginEditor.h
+        source/PluginEditor.cpp
+        source/ProjectInfo.h
+        source/ProjectInfo.cpp.in
+        source/ProjectInfo.cpp
+        source/PluginProcessor.h
         ./source/interface/ParameterSlider.h
         ./source/interface/ParameterSlider.cpp
         ./source/parameters/StateManager.h
