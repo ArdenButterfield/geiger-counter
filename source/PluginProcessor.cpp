@@ -2,8 +2,8 @@
 
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
-#include "../parameters/StateManager.h"
-#include "../audio/Gain.h"
+#include "audio/Gain.h"
+#include "parameters/StateManager.h"
 
 //==============================================================================
 PluginProcessor::PluginProcessor()

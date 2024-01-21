@@ -6,8 +6,8 @@ Last Edited: April 19, 2022
 */
 
 #pragma once
-#include <juce_core/juce_core.h>
-#include <juce_audio_processors/juce_audio_processors.h>
+#include "juce_audio_processors/juce_audio_processors.h"
+#include "juce_core/juce_core.h"
 
 //==============================================================================
 class PluginProcessorBase  : public juce::AudioProcessor

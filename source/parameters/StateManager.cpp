@@ -1,11 +1,10 @@
 // Nathan Blair January 2023
 
 #include "StateManager.h"
-#include "../plugin/PluginProcessor.h"
-#include "../plugin/ProjectInfo.h"
+#include "../PluginProcessor.h"
+#include "../ProjectInfo.h"
 
-
-StateManager::StateManager(PluginProcessor* proc) : 
+StateManager::StateManager(PluginProcessor* proc) :
     PRESETS_DIR(juce::File::getSpecialLocation(juce::File::SpecialLocationType::userMusicDirectory).getChildFile(
         juce::String(JucePlugin_Manufacturer) + "_plugins").getChildFile(JucePlugin_Name).getChildFile("presets")
     ), 

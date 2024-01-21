@@ -5,7 +5,7 @@
 class StateManager;
 class Gain;
 
-#include <juce_audio_basics/juce_audio_basics.h>
+#include "juce_audio_basics/juce_audio_basics.h"
 
 #include "PluginProcessorBase.h"
 

@@ -1,8 +1,8 @@
 // Nathan Blair January 2023
 
 #include "PluginEditor.h"
-#include "../parameters/StateManager.h"
-#include "../interface/ParameterSlider.h"
+#include "interface/ParameterSlider.h"
+#include "parameters/StateManager.h"
 
 //==============================================================================
 AudioPluginAudioProcessorEditor::AudioPluginAudioProcessorEditor (PluginProcessor& p)
