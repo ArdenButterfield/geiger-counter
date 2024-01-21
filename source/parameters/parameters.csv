@@ -1,2 +1,6 @@
 PARAMETER, MIN, MAX, GRAIN, EXP, DEFAULT, AUTOMATABLE, NAME, SUFFIX, TOOLTIP, TO_STRING_ARR
-GAIN, 0, 100, 0, 1, 50, 1, Gain, %, Loudness Parameter, 
+RADIATION, 0, 100, 0, 1, 50, 1, Radiation, %, Radiation Parameter,
+FREQUENCY, 1, 4, 0, 1, 3, 1, Frequency, kHz, Frequency Parameter,
+SPEAKER, 0, 100, 0, 1, 50, 1, Speaker, %, Speaker Parameter,
+ROOM, 0, 100, 0, 1, 50, 1, Room, %, Room Parameter,
+GAIN, 0, 100, 0, 1, 50, 1, Gain, %, Loudness Parameter,

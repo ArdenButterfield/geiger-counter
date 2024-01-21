@@ -49,8 +49,12 @@ private:
     // which is owned by the processor
     StateManager* state;
 
-    // A single slider
+    std::unique_ptr<ParameterSlider> radiation_slider;
+    std::unique_ptr<ParameterSlider> frequency_slider;
+    std::unique_ptr<ParameterSlider> speaker_slider;
+    std::unique_ptr<ParameterSlider> room_slider;
     std::unique_ptr<ParameterSlider> gain_slider;
+
 
     //==============================================================================
     // UNDO REDO
