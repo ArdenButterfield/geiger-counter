@@ -114,6 +114,8 @@ target_sources(SharedCode INTERFACE
         ./source/parameters/create_parameters.py
         ./source/audio/Gain.cpp
         ./source/audio/Gain.h
+        ./source/audio/Clicks.cpp
+        ./source/audio/Clicks.h
         )
 # Adds a BinaryData target for embedding assets into the binary
 include(Assets)

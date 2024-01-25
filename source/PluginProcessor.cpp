@@ -3,12 +3,14 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 #include "audio/Gain.h"
+#include "audio/Clicks.h"
 #include "parameters/StateManager.h"
 
 //==============================================================================
 PluginProcessor::PluginProcessor()
 {
     state = std::make_unique<StateManager>(this);
+    clicks = std::make_unique<Clicks>();
 }
 
 PluginProcessor::~PluginProcessor()
@@ -24,6 +26,7 @@ void PluginProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
     // variables that depend on sample rate or block size
 
     gain = std::make_unique<Gain>(float(sampleRate), samplesPerBlock, getTotalNumOutputChannels(), PARAMETER_DEFAULTS[PARAM::GAIN] / 100.0f);
+    clicks->setSamplerate(sampleRate);
 }
 
 void PluginProcessor::processBlock (juce::AudioBuffer<float>& buffer,
@@ -37,7 +40,7 @@ void PluginProcessor::processBlock (juce::AudioBuffer<float>& buffer,
     // so we normalize it to 0 to 1
     //--------------------------------------------------------------------------------
     auto requested_gain = state->param_value(PARAM::GAIN) / 100.0f;
-
+    auto click_probability = state->param_value(PARAM::RADIATION) / 40000.f;
     //--------------------------------------------------------------------------------
     // process samples below. use the buffer argument that is passed in.
     // for an audio effect, buffer is filled with input samples, and you should fill it with output samples
@@ -46,7 +49,18 @@ void PluginProcessor::processBlock (juce::AudioBuffer<float>& buffer,
     //--------------------------------------------------------------------------------
     
     gain->setGain(requested_gain);
-    gain->process(buffer);
+    clicks->setProbability(click_probability);
+
+    auto wet = juce::AudioBuffer<float>(1, buffer.getNumSamples());
+    wet.clear();
+    clicks->process(wet.getWritePointer(0), wet.getNumSamples());
+
+
+    gain->process(wet);
+
+    for (int i = 0; i < buffer.getNumChannels(); ++i) {
+        buffer.addFrom(i, 0, wet, 0, 0, buffer.getNumSamples());
+    }
     //--------------------------------------------------------------------------------
     // you can use midiMessages to read midi if you need. 
     // since we are not using midi yet, we clear the buffer.

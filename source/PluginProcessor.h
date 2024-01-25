@@ -4,6 +4,7 @@
 
 class StateManager;
 class Gain;
+class Clicks;
 
 #include "juce_audio_basics/juce_audio_basics.h"
 
@@ -29,9 +30,9 @@ public:
     //==============================================================================
     std::unique_ptr<StateManager> state;
 
-  private:
-
+private:
     std::unique_ptr<Gain> gain;
+    std::unique_ptr<Clicks> clicks;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PluginProcessor)
